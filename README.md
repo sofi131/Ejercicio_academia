@@ -1,2 +1,2 @@
 # Ejercicio-academia
-jercicio academia con java
+Ejercicio academia con java
