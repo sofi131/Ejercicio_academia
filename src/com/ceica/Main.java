@@ -139,6 +139,43 @@ public class Main {
 //        System.out.println(juan.toString());
     }
 
+    //nuevo para editar las cosas
+    private static void editarAlumno(Scanner leer, Academia academia, String dni) {
+        String MENUEDITAR = """
+                1. Editar Nombre
+                2. Editar Apellidos
+                3. Editar Fecha Nacimiento
+                """;
+        String opcionEditar, nuevoNombre, nuevoApellido, nuevaFecha;
+        System.out.println(MENUEDITAR);
+        opcionEditar = leer.nextLine();
+
+        switch (opcionEditar) {
+            case "1":
+                System.out.println("El alumno que vas a editar es: " + academia.buscarPorDNI(dni));
+                System.out.println("Nuevo nombre");
+                nuevoNombre = leer.nextLine();
+                //System.out.println(academia.buscarPorDNI(dni));
+                academia.editarNombreAlumnoPorDNI(dni, nuevoNombre);
+                break;
+            case "2":
+                System.out.println("El alumno que vas a editar es: " + academia.buscarPorDNI(dni));
+                System.out.println("Nuevo apellido");
+                nuevoApellido = leer.nextLine();
+                academia.editarApellidosAlumnoPorDNI(dni, nuevoApellido);
+                break;
+            case "3":
+                System.out.println("El alumno que vas a editar es: " + academia.buscarPorDNI(dni));
+                System.out.println("Fecha de nacimiento: dd-MM-yyyy");
+                nuevaFecha = leer.nextLine();
+                academia.editarFechaNacimientoAlumnoPorDNI(dni, nuevaFecha);
+                break;
+
+            default:
+                System.out.println("No válido");
+        }
+    }
+
     //método nuevo alumno - de void a boo
     private static boolean nuevoAlumno(Scanner leer, Academia academia) {
         String nombre, apellidos, dni;
