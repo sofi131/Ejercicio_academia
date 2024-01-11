@@ -96,5 +96,64 @@ public class Academia {
         return "No hay ningún alumno con ese dni";
     }
 
+    //modificar datos ejercicio ---PRUEBA---
+    public String buscarPorDNI2(String dni) {
+        String comprobacion = null;
+        for (int i = 0; i < alumnos.length; i++) {
+            if (alumnos[i].getDni().equals(dni)) {
+                comprobacion = alumnos[i].getNombre() + " " + alumnos[i].getApellidos();
+                break;
+            } else {
+                comprobacion = "Alumno no encontrado";
+            }
+        }
+        return comprobacion;
+    }
+
+//Para modificar nombres y demás
+
+    public boolean buscarAlumnoPorDNI(String dni) {
+        for (int i = 0; i < alumnos.length; i++) {
+            if (alumnos[i] != null)
+                if (dni.equals(alumnos[i].getDni())) {
+                    return true;
+                }
+        }
+        return false;
+    }
+
+    public void editarNombreAlumnoPorDNI(String dni, String nuevoNombre) {
+        for (int i = 0; i < alumnos.length; i++) {
+            if (alumnos[i] != null)
+                if (dni.equals(alumnos[i].getDni())) {
+                    alumnos[i].setNombre(nuevoNombre);
+                }
+        }
+    }
+
+    public void editarApellidosAlumnoPorDNI(String dni, String nuevoApellido) {
+        for (int i = 0; i < alumnos.length; i++) {
+            if (alumnos[i] != null)
+                if (dni.equals(alumnos[i].getDni())) {
+                    alumnos[i].setApellidos(nuevoApellido);
+                }
+        }
+    }
+
+    //para fecha utilizamos el método de arriba en "public boolean altaAlumno"
+    public void editarFechaNacimientoAlumnoPorDNI(String dni, String nuevaFecha) {
+        int year, mes, dia;
+        dia = Integer.parseInt(nuevaFecha.split("-")[0]);
+        mes = Integer.parseInt(nuevaFecha.split("-")[1]);
+        //mes=fechaNacimiento.split("-")[1]; así es como se escribe originalmente
+        year = Integer.parseInt(nuevaFecha.split("-")[2]);
+        for (int i = 0; i < alumnos.length; i++) {
+            if (alumnos[i] != null)
+                if (dni.equals(alumnos[i].getDni())) {
+                    alumnos[i].setFecha_nacimiento(year, mes, dia); //hay que modificar esto
+                }
+        }
+    }
+
 }
 
